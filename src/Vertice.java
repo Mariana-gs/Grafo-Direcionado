@@ -1,17 +1,29 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Vertice {
 
-    private int numVertice;
+    private int rotulo;
     private List<Integer> Sucessores;
     private List<Integer> Predecessores;
 
-    public void inserirSucessor(Integer vertice) {
-        Sucessores.add(vertice);
+
+    Vertice(int rotulo){
+        this.rotulo = rotulo;
+        this.Sucessores = new ArrayList<>();
+        this.Predecessores = new ArrayList<>();
     }
 
-    public void inserirPredecessor(Integer vertice) {
-        Sucessores.add(vertice);
+    public void inserirSucessor(Integer sucessor) {
+
+            this.Sucessores.add(sucessor);
+
+    }
+
+    public void inserirPredecessor(Integer predecessor) {
+
+        this.Predecessores.add(predecessor);
+
     }
 
 

@@ -9,36 +9,48 @@ public class Grafo {
     private void criarGrafo(String arquivoGrafo){
         String entrada;
         String dados[];
+
         ArquivoLeitura arquivo = new ArquivoLeitura(arquivoGrafo);
+
         entrada = arquivo.Ler().trim();
         dados = entrada.split("  ");
         this.qtdVertices = Integer.parseInt(dados[0]);
         this.qtdArestas = Integer.parseInt(dados[1]);
-        grafo = new Vertice[qtdVertices];
-
+        grafo = new Vertice[qtdVertices+1];
 
         //preencher vetor
-        for(int arestas = 1; arestas <= this.qtdArestas; arestas++){
+        int percorridas = 0;
+        while(percorridas != this.qtdArestas){  //cada linha uma aresta
             entrada = arquivo.Ler().trim();
             dados = entrada.split("      ");
 
-            //System.out.println(dados[0] + " -> " + dados[1]);
-
-
+            //dados[0] ->  dados[1]
+            int verticeAtual = Integer.parseInt(dados[0]);
+            int sucessor = Integer.parseInt(dados[1]);
+            inserirVertice(verticeAtual, sucessor);
+            percorridas++;
         }
-
         arquivo.fecharArquivo();
     }
 
+    private void inserirVertice(int verticeAtual, int sucessor){
 
+        //inserir no vetor se não existirem
+        if(grafo[verticeAtual] == null){
+            Vertice vertice = new Vertice(verticeAtual);
+            grafo[verticeAtual] = vertice;
+        }
+        if(grafo[sucessor] == null){
+            Vertice vertice = new Vertice(sucessor);
+            grafo[sucessor] = vertice;
+        }
+        //inserir nas listas
+        grafo[verticeAtual].inserirSucessor(sucessor);
+        grafo[sucessor].inserirPredecessor(verticeAtual);
+    }
 
     Grafo(String arquivoGrafo){
-
         criarGrafo(arquivoGrafo);
-
-
-
-
     }
 
 
