@@ -21,15 +21,30 @@ public class Grafo {
         //preencher vetor
         int percorridas = 0;
         while(percorridas != this.qtdArestas){  //cada linha uma aresta
+            boolean encontrado = false;
             entrada = arquivo.Ler().trim();
-            dados = entrada.split("      ");
+
+            int verticeAtual = 0;
+            int sucessor = 0;
+
+            int i = 0;
+            while(!encontrado){
+                if(entrada.charAt(i) == ' '){
+                    verticeAtual = Integer.parseInt(entrada.substring(0, (i)));
+                    entrada = entrada.substring(i+1);
+                    sucessor = Integer.parseInt(entrada.trim());
+                    encontrado=true;
+                    System.out.println("vértice: " + verticeAtual + " sucessor: " + sucessor);
+                }else{
+                    i++;
+                }
+            }
 
             //dados[0] ->  dados[1]
-            int verticeAtual = Integer.parseInt(dados[0]);
-            int sucessor = Integer.parseInt(dados[1]);
             inserirVertice(verticeAtual, sucessor);
             percorridas++;
         }
+
         arquivo.fecharArquivo();
     }
 
