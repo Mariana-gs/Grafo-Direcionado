@@ -5,7 +5,7 @@ public class Main {
     static public void executarPrograma(){
         Scanner e = new Scanner(System.in);
         boolean excecao = true;
-        String caminho;
+        String caminho = "";
 
         System.out.println("\n == Abrir Arquivo ==");
         System.out.println(" Informe o Caminho do Arquivo com os Dados do Grafo:" );
@@ -14,6 +14,7 @@ public class Main {
             caminho = e.nextLine();
             try {
                 Grafo grafo = new Grafo(caminho);
+                System.out.println(" Grafo criado com Sucesso!");
                 excecao = false;
             } catch (Exception E) {
                 System.out.println(" Não foi Possível Abrir o Arquivo!");
@@ -22,6 +23,9 @@ public class Main {
         }
 
         
+
+
+
     }
 
 
