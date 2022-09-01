@@ -6,9 +6,19 @@ public class Grafo {
     private int qtdVertices;
     private int qtdArestas;
 
+    public int getQtdVertices() {
+        return qtdVertices;
+    }
+    public int getQtdArestas() {
+        return qtdArestas;
+    }
     Grafo(String arquivoGrafo){
         criarGrafo(arquivoGrafo);
     }
+    Grafo(){
+
+    }
+
     private void criarGrafo(String arquivoGrafo){
         String entrada;
         String dados[];
@@ -62,11 +72,12 @@ public class Grafo {
         grafo[sucessor].inserirPredecessor(verticeAtual);
     }
 
+
     public void grauSaida(int vertice){
-        System.out.println("O grau de Saída do Vértice" + vertice + "é: " + grafo[vertice].getGrauSaida());
+        System.out.println("O grau de Saída do Vértice " + vertice + " é: " + grafo[vertice].getGrauSaida());
     }
     public void grauEntrada(int vertice){
-        System.out.println("O grau de Entrada do Vértice" + vertice + "é: " + grafo[vertice].getGrauEntrada());
+        System.out.println("O grau de Entrada do Vértice " + vertice + " é: " + grafo[vertice].getGrauEntrada());
     }
     public void exibirSucessores(int vertice){
         grafo[vertice].exibirSucessores();

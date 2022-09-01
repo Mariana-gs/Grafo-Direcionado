@@ -34,7 +34,7 @@ public class Vertice {
     }
 
     public void exibirSucessores(){
-        System.out.print("\nOs Sucessores do Vétice " + this.rotulo + " são: {");
+        System.out.print("Os Sucessores do Vértice " + this.rotulo + " são: {");
         for(int i=0; i < this.grauSaida; i++){
             System.out.print("(" + Sucessores.get(i) + ")");
             if(i < this.grauSaida - 1){
@@ -44,7 +44,7 @@ public class Vertice {
         System.out.print("}\n");
     }
     public void exibirPredecessores(){
-        System.out.print("\nOs Predecessores do Vétice " + this.rotulo + " são: {");
+        System.out.print("Os Predecessores do Vértice " + this.rotulo + " são: {");
         for(int i=0; i < this.grauEntrada; i++){
             System.out.print("(" + Predecessores.get(i) + ")");
             if(i < this.grauEntrada-1){
