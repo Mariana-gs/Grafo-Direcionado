@@ -9,7 +9,6 @@ public class Grafo {
     Grafo(String arquivoGrafo){
         criarGrafo(arquivoGrafo);
     }
-
     private void criarGrafo(String arquivoGrafo){
         String entrada;
         String dados[];
@@ -64,10 +63,10 @@ public class Grafo {
     }
 
     public void grauSaida(int vertice){
-        grafo[vertice].exibirGrauSaida();
+        System.out.println("O grau de Saída do Vértice" + vertice + "é: " + grafo[vertice].getGrauSaida());
     }
     public void grauEntrada(int vertice){
-        grafo[vertice].exibirgGrauEntrada();
+        System.out.println("O grau de Entrada do Vértice" + vertice + "é: " + grafo[vertice].getGrauEntrada());
     }
     public void exibirSucessores(int vertice){
         grafo[vertice].exibirSucessores();
