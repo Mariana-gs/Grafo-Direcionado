@@ -7,6 +7,7 @@ public class Vertice {
     private List<Integer> Sucessores;
     private List<Integer> Predecessores;
 
+
     Vertice(int rotulo){
         this.rotulo = rotulo;
         this.Sucessores = new ArrayList<>();
@@ -16,7 +17,6 @@ public class Vertice {
     public void inserirSucessor(Integer sucessor) {
             this.Sucessores.add(sucessor);
     }
-
     public void inserirPredecessor(Integer predecessor) {
         this.Predecessores.add(predecessor);
     }
@@ -31,7 +31,6 @@ public class Vertice {
         }
         System.out.print("}\n");
     }
-
     public void exibirPredecessores(){
         System.out.print("\nOs Predecessores do Vétice " + this.rotulo + " são: {");
         for(int i=0; i < Predecessores.size(); i++){
@@ -43,6 +42,13 @@ public class Vertice {
         System.out.print("}\n");
     }
 
+    public void exibirGrauSaida(){
+        System.out.println("\nO grau de Saída do Vértice " + this.rotulo + " é: " + this.Sucessores.size());
+    }
+
+    public void exibirgGrauEntrada(){
+        System.out.println("\nO grau de Entrada do Vértice " + this.rotulo + " é: " + this.Predecessores.size());
+    }
 
 }
 

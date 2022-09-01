@@ -48,7 +48,6 @@ public class Grafo {
         }
         arquivo.fecharArquivo();
     }
-
     private void inserirVertice(int verticeAtual, int sucessor){
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
@@ -64,27 +63,17 @@ public class Grafo {
         grafo[sucessor].inserirPredecessor(verticeAtual);
     }
 
-    public int grauSaida(){
-
-
-        return 0;
+    public void grauSaida(int vertice){
+        grafo[vertice].exibirGrauSaida();
     }
-
-    public int grauEntrada(){
-
-
-        return 0;
+    public void grauEntrada(int vertice){
+        grafo[vertice].exibirgGrauEntrada();
     }
-
     public void exibirSucessores(int vertice){
-
         grafo[vertice].exibirSucessores();
-
     }
-
     public void exibirPredecessores(int vertice){
         grafo[vertice].exibirPredecessores();
     }
-
 
 }
