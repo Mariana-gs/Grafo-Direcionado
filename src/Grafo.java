@@ -6,50 +6,50 @@ public class Grafo {
     private int qtdVertices;
     private int qtdArestas;
 
+    Grafo(String arquivoGrafo){
+        criarGrafo(arquivoGrafo);
+    }
+
     private void criarGrafo(String arquivoGrafo){
         String entrada;
         String dados[];
 
         ArquivoLeitura arquivo = new ArquivoLeitura(arquivoGrafo);
 
+        //primeira linha do Arquivo
         entrada = arquivo.Ler().trim();
         dados = entrada.split("  ");
         this.qtdVertices = Integer.parseInt(dados[0]);
         this.qtdArestas = Integer.parseInt(dados[1]);
         grafo = new Vertice[qtdVertices+1];
 
-        //preencher vetor
+        //Obter Vétices da linha do Arquivo
         int percorridas = 0;
-        while(percorridas != this.qtdArestas){  //cada linha uma aresta
-            boolean encontrado = false;
-            entrada = arquivo.Ler().trim();
 
+        while(percorridas != this.qtdArestas){  //para todas as arestas
+            boolean encontrado = false; // encontrar fim do primeiro número
             int verticeAtual = 0;
             int sucessor = 0;
-
             int i = 0;
+            entrada = arquivo.Ler().trim();
+
             while(!encontrado){
                 if(entrada.charAt(i) == ' '){
                     verticeAtual = Integer.parseInt(entrada.substring(0, (i)));
                     entrada = entrada.substring(i+1);
                     sucessor = Integer.parseInt(entrada.trim());
-                    encontrado=true;
-                    System.out.println("vértice: " + verticeAtual + " sucessor: " + sucessor);
+                    encontrado = true;
                 }else{
                     i++;
                 }
             }
-
-            //dados[0] ->  dados[1]
             inserirVertice(verticeAtual, sucessor);
             percorridas++;
         }
-
         arquivo.fecharArquivo();
     }
 
     private void inserirVertice(int verticeAtual, int sucessor){
-
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
             Vertice vertice = new Vertice(verticeAtual);
@@ -64,12 +64,27 @@ public class Grafo {
         grafo[sucessor].inserirPredecessor(verticeAtual);
     }
 
-    Grafo(String arquivoGrafo){
-        criarGrafo(arquivoGrafo);
+    public int grauSaida(){
+
+
+        return 0;
     }
 
+    public int grauEntrada(){
 
 
+        return 0;
+    }
+
+    public void exibirSucessores(int vertice){
+
+        grafo[vertice].exibirSucessores();
+
+    }
+
+    public void exibirPredecessores(int vertice){
+        grafo[vertice].exibirPredecessores();
+    }
 
 
 }

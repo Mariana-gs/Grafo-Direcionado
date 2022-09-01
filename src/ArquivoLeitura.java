@@ -4,7 +4,6 @@ public class ArquivoLeitura {
 
     private BufferedReader entrada;
 
-
     public ArquivoLeitura(String caminhoArquivo) {
         try {
             entrada = new BufferedReader(new FileReader(caminhoArquivo));
@@ -14,7 +13,6 @@ public class ArquivoLeitura {
     }
     public String Ler(){
             String textoArquivo = null;
-
         try {
              textoArquivo = entrada.readLine();
         }catch (EOFException excecao) { //Exceção de final de arquivo.
@@ -25,7 +23,6 @@ public class ArquivoLeitura {
         }finally {
             return textoArquivo;
         }
-
     }
     public void fecharArquivo() {
         try {

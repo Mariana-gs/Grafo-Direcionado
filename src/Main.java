@@ -12,6 +12,8 @@ public class Main {
         String caminho = e.nextLine();
         Grafo grafo = new Grafo(caminho);
 
+        grafo.exibirSucessores(1);
+        grafo.exibirPredecessores(2);
 
     }
 }
