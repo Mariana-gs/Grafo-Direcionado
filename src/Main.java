@@ -23,7 +23,6 @@ public class Main {
                 System.out.println(" Por Favor Informe o Caminho Novamente: ");
             }
         }
-
         System.out.println("\n O grafo informado possui: \n-> " + grafo.getQtdVertices() + " Vértices\n-> " + grafo.getQtdArestas() + " Arestas");
         System.out.println(" Informe um vértice para continuar: ");
         vertice = e.nextInt();
@@ -34,10 +33,13 @@ public class Main {
         grafo.exibirSucessores(vertice);
         grafo.exibirPredecessores(vertice);
 
+        //menu 2
+        System.out.println("\nO que deseja fazer agora? ");
+        System.out.println("1. Informar outro Vértice ");
+        System.out.println("2. Abrir outro Arquivo ");
+        System.out.println("3. Sair do Programa ");
         
-
     }
-
 
     public static void main(String[] args) {
 
@@ -48,7 +50,7 @@ public class Main {
             System.out.println("\n===== Implementação de Grafos Direcionados =====");
             System.out.println(" == Menu Principal ==");
             System.out.println(" 1. Abrir Arquivo ");
-            System.out.println(" 2. Sair ");
+            System.out.println(" 2. Sair do Programa");
             menuUm = e.nextInt();
         }
 
@@ -61,6 +63,5 @@ public class Main {
                 e.close();
                 break;
         }
-
     }
 }
