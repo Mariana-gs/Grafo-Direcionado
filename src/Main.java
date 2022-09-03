@@ -12,7 +12,6 @@ public class Main {
         return e.nextInt();
     }
 
-
     static public Grafo abrirArquivo(){
         Grafo grafo = null;
         boolean excecao = true;
@@ -40,7 +39,6 @@ public class Main {
 
     static public void executarPrograma(){
 
-
         int vertice = 0;
         int menuDois = 0;
         Grafo grafo = null;
@@ -56,11 +54,12 @@ public class Main {
                 grafo.exibirSucessores(vertice);
                 grafo.exibirPredecessores(vertice);
 
-                menuDois = menuDois();
+                do {
+                    menuDois = menuDois();
+                }while (menuDois < 1 || menuDois > 3);
+
             }while (menuDois == 1);
         }while (menuDois == 2);
-
-
     }
 
     public static void main(String[] args) {
