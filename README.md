@@ -12,7 +12,7 @@
 
 </div>
 
-> Implementação de estruturas de dados para representação de grafos e seu uso para obtenção de informações sobre grau e vizinhança dos vértices.
+> Implementação de estruturas de dados para representação de grafos e seu uso para obtenção de informações sobre grau e vizinhança dos vértices. Devido ao tamanho dos grafos, foi escolhido trabalhar com listas de adjacência.
 
 ### Ajustes e melhorias
 
