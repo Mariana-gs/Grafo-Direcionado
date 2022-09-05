@@ -2,9 +2,9 @@ import java.lang.reflect.Constructor;
 
 public class Grafo {
 
-    private Vertice grafo[];
-    private int qtdVertices;
-    private int qtdArestas;
+    private Vertice grafo[];  //Vetor de Listas
+    private int qtdVertices;  //Quantidade de Vértices do Grafo
+    private int qtdArestas;   //Quantidade de Arestas do Grafo
 
     public int getQtdVertices() {
         return qtdVertices;
@@ -12,13 +12,18 @@ public class Grafo {
     public int getQtdArestas() {
         return qtdArestas;
     }
+
+    /**
+     * Construtor
+     * @param arquivoGrafo Caminho do Arquivo
+     */
     Grafo(String arquivoGrafo){
         criarGrafo(arquivoGrafo);
     }
-    Grafo(){
-
-    }
-
+    /**
+     * Lê o Arquivo, cria e preenche o Grafo
+     * @param arquivoGrafo Caminho do Arquivo
+     */
     private void criarGrafo(String arquivoGrafo){
         String entrada;
         String dados[];
@@ -36,7 +41,7 @@ public class Grafo {
         int percorridas = 0;
 
         while(percorridas != this.qtdArestas){  //para todas as arestas
-            boolean encontrado = false; // encontrar fim do primeiro número
+            boolean encontrado = false;         //encontrar fim do primeiro número
             int verticeAtual = 0;
             int sucessor = 0;
             int i = 0;
@@ -57,6 +62,11 @@ public class Grafo {
         }
         arquivo.fecharArquivo();
     }
+    /**
+     * Insere um vétice no Grafo
+     * @param verticeAtual
+     * @param sucessor
+     */
     private void inserirVertice(int verticeAtual, int sucessor){
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
@@ -72,16 +82,32 @@ public class Grafo {
         grafo[sucessor].inserirPredecessor(verticeAtual);
     }
 
-
+    /**
+     * Exibe Grau de Saída do Vértice
+     * @param vertice
+     */
     public void grauSaida(int vertice){
         System.out.println("O grau de Saída do Vértice " + vertice + " é: " + grafo[vertice].getGrauSaida());
     }
+    /**
+     * Exibe Grau de Entrada do Vértice
+     * @param vertice
+     */
     public void grauEntrada(int vertice){
         System.out.println("O grau de Entrada do Vértice " + vertice + " é: " + grafo[vertice].getGrauEntrada());
     }
+
+    /**
+     * Exibe todos os Sucessores do Vértice
+     * @param vertice
+     */
     public void exibirSucessores(int vertice){
         grafo[vertice].exibirSucessores();
     }
+    /**
+     * Exibe todos os Predecessores do Vértice
+     * @param vertice
+     */
     public void exibirPredecessores(int vertice){
         grafo[vertice].exibirPredecessores();
     }
