@@ -52,6 +52,16 @@ public class Pilha {
         return item;
     }
 
+    public Vertice consultar() throws Exception{
+        Vertice item = null;
+        if(!pilhaVazia()){
+            item = this.pilha[this.topo-1];
+        }else{
+            throw new Exception("Não foi possível consultar: Pilha vazia!");
+        }
+        return item;
+    }
+
     public void imprimir(){
         for(int i = this.topo-1; i >=0; i--){
             System.out.println(pilha[i].getRotulo());

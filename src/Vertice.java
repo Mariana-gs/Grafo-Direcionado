@@ -15,9 +15,15 @@ public class Vertice {
     public int getGrauEntrada() {
         return grauEntrada;
     }
-
     public int getRotulo() {
         return rotulo;
+    }
+
+    public List<Integer> getSucessores() {
+        return Sucessores;
+    }
+    public List<Integer> getPredecessores() {
+        return Predecessores;
     }
 
     /**

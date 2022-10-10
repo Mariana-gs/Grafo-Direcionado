@@ -2,7 +2,7 @@ import java.lang.reflect.Constructor;
 
 public class Grafo {
 
-    private Vertice grafo[];  //Vetor de Listas
+    Vertice grafo[];  //Vetor de Listas
     private int qtdVertices;  //Quantidade de Vértices do Grafo
     private int qtdArestas;   //Quantidade de Arestas do Grafo
 
@@ -12,6 +12,7 @@ public class Grafo {
     public int getQtdArestas() {
         return qtdArestas;
     }
+
 
     /**
      * Construtor
@@ -81,7 +82,6 @@ public class Grafo {
         grafo[verticeAtual].inserirSucessor(sucessor);
         grafo[sucessor].inserirPredecessor(verticeAtual);
     }
-
     /**
      * Exibe Grau de Saída do Vértice
      * @param vertice
@@ -110,6 +110,11 @@ public class Grafo {
      */
     public void exibirPredecessores(int vertice){
         grafo[vertice].exibirPredecessores();
+    }
+
+    public void buscaProfundidade(int verticeOrigem){
+        BuscaProfundidade buscaProfundidade = new BuscaProfundidade(grafo);
+        buscaProfundidade.buscar(verticeOrigem);
     }
 
 

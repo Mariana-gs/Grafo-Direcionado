@@ -70,6 +70,7 @@ public class Main {
                 grafo.grauEntrada(vertice);
                 grafo.exibirSucessores(vertice);
                 grafo.exibirPredecessores(vertice);
+                grafo.buscaProfundidade(vertice);
 
                 do {
                     menuDois = menuDois();
@@ -102,6 +103,10 @@ public class Main {
                 e.close();
                 break;
         }
+
+
+
+
 
 
     }
