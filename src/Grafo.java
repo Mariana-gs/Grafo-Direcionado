@@ -112,4 +112,10 @@ public class Grafo {
         grafo[vertice].exibirPredecessores();
     }
 
+    public void buscaProfundidade(int verticeInicial){
+
+
+
+    }
+
 }

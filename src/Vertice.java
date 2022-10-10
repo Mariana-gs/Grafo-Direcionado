@@ -16,6 +16,10 @@ public class Vertice {
         return grauEntrada;
     }
 
+    public int getRotulo() {
+        return rotulo;
+    }
+
     /**
      * Construtor
      * @param rotulo Rótulo do Vétice
