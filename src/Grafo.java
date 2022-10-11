@@ -117,5 +117,10 @@ public class Grafo {
         buscaProfundidade.buscar(verticeOrigem);
     }
 
+    public void buscaLargura(int verticeOrigem){
+        BuscaLargura buscaLargura = new BuscaLargura(grafo);
+        buscaLargura.buscar(verticeOrigem);
+    }
+
 
 }

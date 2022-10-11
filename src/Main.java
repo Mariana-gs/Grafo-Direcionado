@@ -42,6 +42,7 @@ public class Main {
             } catch (Exception E) {
                 System.out.println(" Não foi Possível Abrir o Arquivo!");
                 System.out.println(" Por Favor Informe o Caminho Novamente: ");
+                caminho = e.nextLine();
                 excecao = true;
             }
         }
@@ -71,6 +72,7 @@ public class Main {
                 grafo.exibirSucessores(vertice);
                 grafo.exibirPredecessores(vertice);
                 grafo.buscaProfundidade(vertice);
+                grafo.buscaLargura(vertice);
 
                 do {
                     menuDois = menuDois();

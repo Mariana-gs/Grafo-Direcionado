@@ -38,6 +38,14 @@ public class Vertice {
         this.grauEntrada = this.Predecessores.size();
     }
 
+    Vertice(){
+        this.rotulo = 0;
+        this.Sucessores = new ArrayList<>();
+        this.Predecessores = new ArrayList<>();
+        this.grauSaida = this.Sucessores.size();
+        this.grauEntrada = this.Predecessores.size();
+    }
+
     /**
      * Insere um Sucessor na Lista
      * @param sucessor
