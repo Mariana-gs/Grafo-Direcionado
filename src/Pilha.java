@@ -4,6 +4,10 @@ public class Pilha {
     private int fundo;
     private int tamanho;
 
+    public Vertice[] getPilha() {
+        return pilha;
+    }
+
     public int getTopo() {
         return topo;
     }
@@ -67,8 +71,11 @@ public class Pilha {
     }
 
     public void imprimir(){
-        for(int i = this.topo-1; i >=0; i--){
-            System.out.println(pilha[i].getRotulo());
+        for(int i = 0; i <= this.topo-1; i++){
+            System.out.println(" (" + pilha[i].getRotulo() + ")");
+            if(i <= this.topo-2){
+                System.out.println("  |");
+            }
         }
     }
 

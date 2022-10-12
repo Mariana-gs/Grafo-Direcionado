@@ -208,6 +208,65 @@ public class Busca {
         return false;
     }
 
+
+    public boolean buscaCaminho(int verticeOrigem, int verticeDestino){
+
+
+        /*
+         * Buscar, se encontrar o vertice destino imprimir a pilha
+         * else
+         * não há caminho
+         */
+
+        Pilha visitados = new Pilha(this.grafo.length);
+        int matrizBusca[][] = new int[2][this.grafo.length];
+
+        int u = 0;
+        int sucessor;
+
+        matrizBusca[0][verticeOrigem] = 1;
+        try {
+            visitados.empilhar(grafo[verticeOrigem]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        while(!visitados.pilhaVazia()){
+            try {
+                u = visitados.consultar().getRotulo();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            sucessor = sucessorNaoVisitado(u, matrizBusca);
+
+            if(sucessor != -1){ //se tem sucessores não visitados
+                matrizBusca[0][sucessor] = 1; //visitado
+                matrizBusca[1][sucessor] = u; //predecessor
+                try {
+                    visitados.empilhar(grafo[sucessor]);
+                    if(sucessor == verticeDestino){
+                        System.out.println("\nPrimeiro caminho encontrado entre os vértices " + verticeOrigem + " e "+ verticeDestino);
+                        visitados.imprimir();
+                        return true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } //empilhar sucessor
+
+            }else{
+                try {
+                    visitados.desempilhar();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } //desempilhar
+            }
+        }
+
+        return false;
+    }
+
+
+
     public void imprimirArvore(int[][] arvore){
         for(int i = 0 ; i < arvore.length; i++){
             if(arvore[i][0] != 0){
