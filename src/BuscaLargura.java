@@ -10,9 +10,11 @@ public class BuscaLargura {
         this.visitados = new Fila(this.grafo.length);
     }
 
-    public void buscar(int verticeOrigem){
+    public int[][] buscar(int verticeOrigem){
 
-        System.out.println("Árvore da Busca em Largura:");
+        int arvore[][] = new int[this.grafo.length][2];
+        int a = 0;
+
         int u = 0;
         int sucessor;
 
@@ -39,7 +41,10 @@ public class BuscaLargura {
                 if(matrizBusca[0][sucessor] != 1){  //se não for visitado
                     matrizBusca[0][sucessor] = 1; //visitado
                     matrizBusca[1][sucessor] = u; //predecessor
-                    System.out.println(u + "->" + sucessor);
+                    arvore[a][0] = u;
+                    arvore[a][1] = sucessor;
+                    a++;
+                    //System.out.println(u + "->" + sucessor);
                     try {
                         visitados.enfileirar(grafo[sucessor]);
                     } catch (Exception e) {
@@ -51,7 +56,7 @@ public class BuscaLargura {
             }
 
         }
-
+        return arvore;
     }
 
 

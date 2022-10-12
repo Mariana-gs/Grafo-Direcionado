@@ -22,6 +22,10 @@ public class Grafo {
     Grafo(String arquivoGrafo){
         criarGrafo(arquivoGrafo);
     }
+    Grafo(int tamanho){
+        grafo = new Vertice[tamanho+1];
+    }
+
     /**
      * Lê o Arquivo, cria e preenche o Grafo
      * @param arquivoGrafo Caminho do Arquivo
@@ -64,13 +68,13 @@ public class Grafo {
         }
         arquivo.fecharArquivo();
     }
+
     /**
      * Insere um vétice no Grafo
      * @param verticeAtual
      * @param sucessor
      */
-
-    private void inserirVertice(int verticeAtual, int sucessor){
+    public void inserirVertice(int verticeAtual, int sucessor){
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
             Vertice vertice = new Vertice(verticeAtual);
@@ -133,12 +137,26 @@ public class Grafo {
 
     public void buscaProfundidade(int verticeOrigem){
         BuscaProfundidade buscaProfundidade = new BuscaProfundidade(grafo);
-        buscaProfundidade.buscar(verticeOrigem);
-    }
-    public void buscaLargura(int verticeOrigem){
-        BuscaLargura buscaLargura = new BuscaLargura(grafo);
-        buscaLargura.buscar(verticeOrigem);
+        System.out.println("Árvore da Busca em Profundidade");
+        System.out.println("Raiz: " + verticeOrigem);
+        imprimirArvore(buscaProfundidade.buscar(verticeOrigem));
     }
 
+    public void buscaLargura(int verticeOrigem){
+        BuscaLargura buscaLargura = new BuscaLargura(grafo);
+        System.out.println("Árvore da Busca em Largura");
+        System.out.println("Raiz: " + verticeOrigem);
+        imprimirArvore(buscaLargura.buscar(verticeOrigem));
+    }
+
+    public void imprimirArvore(int[][] arvore){
+        for(int i = 0 ; i < arvore.length; i++){
+            if(arvore[i][0] != 0){
+                System.out.println(arvore[i][0] + " -> " +  arvore[i][1]);
+            }else{
+                break;
+            }
+        }
+    }
 
 }

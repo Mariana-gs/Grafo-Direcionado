@@ -8,12 +8,13 @@ public class BuscaProfundidade {
         this.grafo = grafo;
         this.matrizBusca = new int[2][this.grafo.length]; //posição 0 não é usada
         this.visitados = new Pilha(this.grafo.length);
-
     }
 
-    public void buscar(int verticeOrigem){
+    public int[][] buscar(int verticeOrigem){
 
-        System.out.println("Árvore da Busca em Profundidade:");
+        int arvore[][] = new int[this.grafo.length][2];
+        int a = 0;
+
         int u = 0;
         int sucessor;
 
@@ -35,14 +36,14 @@ public class BuscaProfundidade {
             if(sucessor != -1){ //se tem sucessores não visitados
                 matrizBusca[0][sucessor] = 1; //visitado
                 matrizBusca[1][sucessor] = u; //predecessor
-                System.out.println(u + "->" + sucessor);
+                arvore[a][0] = u;
+                arvore[a][1] = sucessor;
+                a++;
                 try {
                     visitados.empilhar(grafo[sucessor]);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } //empilhar sucessor
-
-
 
             }else{
                 try {
@@ -53,9 +54,15 @@ public class BuscaProfundidade {
             }
 
         }
-
+        return arvore;
     }
 
+    /**
+     * Função que retorna o próximo sucessor que ainda não foi
+     * visitado, se não houver, retorna -1
+     * @param u
+     * @return
+     */
     public int sucessorNaoVisitado(int u){
         int qtdSucessores = grafo[u].getSucessores().size();
         int i = 0;
@@ -71,5 +78,7 @@ public class BuscaProfundidade {
         }
         return -1;
     }
+
+
 
 }
