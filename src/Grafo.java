@@ -3,6 +3,7 @@ import java.util.List;
 public class Grafo {
 
     Vertice grafo[];  //Vetor de Listas
+    Vertice subjacente[];
     private int qtdVertices;  //Quantidade de Vértices do Grafo
     private int qtdArestas;   //Quantidade de Arestas do Grafo
     private Busca buscas;
@@ -39,6 +40,7 @@ public class Grafo {
         this.qtdVertices = Integer.parseInt(dados[0]);
         this.qtdArestas = Integer.parseInt(dados[1]);
         grafo = new Vertice[qtdVertices+1];
+        subjacente = new Vertice[qtdVertices+1];
 
         //Obter Vétices da linha do Arquivo
         int percorridas = 0;
@@ -76,14 +78,21 @@ public class Grafo {
         if(grafo[verticeAtual] == null){
             Vertice vertice = new Vertice(verticeAtual);
             grafo[verticeAtual] = vertice;
+            subjacente[verticeAtual] = vertice;
         }
         if(grafo[sucessor] == null){
             Vertice vertice = new Vertice(sucessor);
             grafo[sucessor] = vertice;
+            subjacente[sucessor] = vertice;
         }
         //inserir nas listas
         grafo[verticeAtual].inserirSucessor(sucessor);
         grafo[sucessor].inserirPredecessor(verticeAtual);
+
+        subjacente[verticeAtual].inserirSucessor(sucessor);
+        subjacente[verticeAtual].inserirPredecessor(sucessor);
+        subjacente[sucessor].inserirPredecessor(verticeAtual);
+        subjacente[sucessor].inserirSucessor(verticeAtual);
     }
     /**
      * Exibe Grau de Saída do Vértice
@@ -150,8 +159,14 @@ public class Grafo {
         buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
+
+
     public void buscaCaminho(int verticeOrigem, int verticeDestino){
-        if(buscas.buscaCaminho(verticeOrigem,verticeDestino) == false){
+        Pilha visitados = buscas.buscaCaminho(verticeOrigem,verticeDestino);
+        if(!visitados.pilhaVazia()){
+            System.out.println("\nPrimeiro caminho encontrado entre os vértices " + verticeOrigem + " e "+ verticeDestino);
+            visitados.imprimir();
+        } else{
             System.out.println("Não existe caminho entre os vértices " + verticeOrigem + " e "+ verticeDestino);
         }
 

@@ -209,11 +209,12 @@ public class Busca {
     }
 
 
-    public boolean buscaCaminho(int verticeOrigem, int verticeDestino){
-
+    public Pilha buscaCaminho(int verticeOrigem, int verticeDestino){
 
         /*
-         * Buscar, se encontrar o vertice destino imprimir a pilha
+         * Buscar,
+         * if
+         * encontrar o vertice destino imprimir a pilha
          * else
          * não há caminho
          */
@@ -245,9 +246,7 @@ public class Busca {
                 try {
                     visitados.empilhar(grafo[sucessor]);
                     if(sucessor == verticeDestino){
-                        System.out.println("\nPrimeiro caminho encontrado entre os vértices " + verticeOrigem + " e "+ verticeDestino);
-                        visitados.imprimir();
-                        return true;
+                        return visitados;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -262,9 +261,8 @@ public class Busca {
             }
         }
 
-        return false;
+        return visitados;
     }
-
 
 
     public void imprimirArvore(int[][] arvore){
