@@ -130,10 +130,14 @@ public class Busca {
         return -1;
     }
 
-
+    /**
+     * Método testa se o grafo possui ciclo
+     * @param verticeOrigem
+     * @return
+     */
     public boolean buscaCiclo(int verticeOrigem){
 
-        int controleCiclo[] = new int[this.grafo.length];
+        int controleCiclo[] = new int[this.grafo.length]; //controle de itens que estão na pilha
 
         int qtdVisitados = 0;
         int contadorSucessores = 0;
@@ -141,11 +145,8 @@ public class Busca {
         Pilha visitados = new Pilha(this.grafo.length);
         int matrizBusca[][] = new int[2][this.grafo.length];
 
-        int caminho[][] = new int[this.grafo.length][2];
-        int a = 0;
-
         int u = 0;
-        int sucessor;
+        int sucessor = 0;
 
         matrizBusca[0][verticeOrigem] = 1;
         try {
@@ -155,6 +156,7 @@ public class Busca {
             e.printStackTrace();
         }
 
+        // Busca termina qaundo a pilha está vazia
         while(!visitados.pilhaVazia()){
             try {
                 u = visitados.consultar().getRotulo();
@@ -162,13 +164,14 @@ public class Busca {
                 e.printStackTrace();
             }
 
-
-            //Precisa estar na pilha e não ser o topo
-
+            /**
+             * Verifica se há um sucessor do vértice atual que já foi visitado
+             * para fechar um ciclo
+             */
             while (contadorSucessores < grafo[u].getSucessores().size()){
                 sucessor = grafo[u].getSucessores().get(contadorSucessores); //obtem rótulo de um sucessor
                 try {
-                    if(qtdVisitados <= 2){
+                    if(qtdVisitados <= 2){  //só há ciclo para mais de 2 vértices no grafo
                         break;
                     }else if(controleCiclo[sucessor] == 1){  //se for visitado e não estiver no topo da pilha
                         return true;
@@ -179,6 +182,7 @@ public class Busca {
                     e.printStackTrace();
                 }
             }
+            contadorSucessores = 0;
 
                 sucessor = sucessorNaoVisitado(u, matrizBusca);
                 if(sucessor != -1){ //se tem sucessores não visitados
@@ -186,31 +190,23 @@ public class Busca {
                     controleCiclo[sucessor] = 1;
                     qtdVisitados++;
                     matrizBusca[1][sucessor] = u; //predecessor
-                    caminho[a][0] = u;
-                    caminho[a][1] = sucessor;
-                    a++;
-                    try {
+                    try {  //empilhar sucessor
                         visitados.empilhar(grafo[sucessor]);
                     } catch (Exception e) {
                         e.printStackTrace();
-                    } //empilhar sucessor
-                    contadorSucessores = 0;
-
+                    }
                 }else{
-                    try {
-                        controleCiclo[visitados.consultar().getRotulo()] = 0; //removendo dos visitados do ciclo (pilha)
+                    try { //desempilhar
+                        controleCiclo[visitados.consultar().getRotulo()] = 0; //removendo da pilha
                         visitados.desempilhar();
                     } catch (Exception e) {
                         e.printStackTrace();
-                    } //desempilhar
+                    }
                 }
             }
 
         return false;
     }
-
-
-
 
     public void imprimirArvore(int[][] arvore){
         for(int i = 0 ; i < arvore.length; i++){
