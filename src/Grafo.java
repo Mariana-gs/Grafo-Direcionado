@@ -1,10 +1,12 @@
 import java.lang.reflect.Constructor;
+import java.util.List;
 
 public class Grafo {
 
     Vertice grafo[];  //Vetor de Listas
     private int qtdVertices;  //Quantidade de Vértices do Grafo
     private int qtdArestas;   //Quantidade de Arestas do Grafo
+    private Busca buscas;
 
     public int getQtdVertices() {
         return qtdVertices;
@@ -13,14 +15,15 @@ public class Grafo {
         return qtdArestas;
     }
 
-
     /**
      * Construtor
      * @param arquivoGrafo Caminho do Arquivo
      */
     Grafo(String arquivoGrafo){
         criarGrafo(arquivoGrafo);
+        this.buscas = new Busca(grafo);
     }
+
     /**
      * Lê o Arquivo, cria e preenche o Grafo
      * @param arquivoGrafo Caminho do Arquivo
@@ -63,12 +66,13 @@ public class Grafo {
         }
         arquivo.fecharArquivo();
     }
+
     /**
      * Insere um vétice no Grafo
      * @param verticeAtual
      * @param sucessor
      */
-    private void inserirVertice(int verticeAtual, int sucessor){
+    public void inserirVertice(int verticeAtual, int sucessor){
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
             Vertice vertice = new Vertice(verticeAtual);
@@ -102,24 +106,51 @@ public class Grafo {
      * @param vertice
      */
     public void exibirSucessores(int vertice){
-        grafo[vertice].exibirSucessores();
+        List<Integer> Sucessores = grafo[vertice].getSucessores();
+        System.out.print("Os Sucessores do Vértice " + vertice + " são: {");
+        for(int i=0; i < Sucessores.size(); i++){
+            System.out.print("(" + Sucessores.get(i) + ")");
+            if(i < Sucessores.size() - 1){
+                System.out.print("; ");
+            }
+        }
+        System.out.print("}\n");
     }
+
     /**
      * Exibe todos os Predecessores do Vértice
      * @param vertice
      */
     public void exibirPredecessores(int vertice){
-        grafo[vertice].exibirPredecessores();
+        List<Integer> Predecessores = grafo[vertice].getPredecessores();
+        System.out.print("Os Predecessores do Vértice " + vertice + " são: {");
+        for(int i=0; i < Predecessores.size(); i++){
+            System.out.print("(" + Predecessores.get(i) + ")");
+            if(i < Predecessores.size()-1){
+                System.out.print("; ");
+            }
+        }
+        System.out.print("}\n");
     }
 
-    public void buscaProfundidade(int verticeOrigem){
-        BuscaProfundidade buscaProfundidade = new BuscaProfundidade(grafo);
-        buscaProfundidade.buscar(verticeOrigem);
+    /**
+     * Imprime a Árvore gerada pela Busca em Profundidade
+     * @param verticeOrigem
+     */
+    public void buscaProfundidade(int verticeOrigem) {
+        System.out.println("Árvore da Busca em Profundidade");
+        System.out.println("Raiz: " + verticeOrigem);
+        buscas.imprimirArvore(buscas.buscaProfundidade(verticeOrigem));
     }
 
+    /**
+     * Imprime a Árvore gerada pela Busca em Largura
+     * @param verticeOrigem
+     */
     public void buscaLargura(int verticeOrigem){
-        BuscaLargura buscaLargura = new BuscaLargura(grafo);
-        buscaLargura.buscar(verticeOrigem);
+        System.out.println("Árvore da Busca em Largura");
+        System.out.println("Raiz: " + verticeOrigem);
+        buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
 

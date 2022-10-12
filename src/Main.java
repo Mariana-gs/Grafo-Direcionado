@@ -28,7 +28,6 @@ public class Main {
         boolean excecao = true;
         String caminho = "";
 
-
         System.out.println("\n == Abrir Arquivo ==");
         System.out.println(" Informe o Caminho do Arquivo com os Dados do Grafo:");
         e.nextLine();
@@ -68,10 +67,15 @@ public class Main {
                 vertice = e.nextInt();
                 System.out.println("\nInformações sobre o vértice: ");
                 grafo.grauSaida(vertice);
+                System.out.println("---");
                 grafo.grauEntrada(vertice);
+                System.out.println("---");
                 grafo.exibirSucessores(vertice);
+                System.out.println("---");
                 grafo.exibirPredecessores(vertice);
+                System.out.println("---");
                 grafo.buscaProfundidade(vertice);
+                System.out.println("---");
                 grafo.buscaLargura(vertice);
 
                 do {
@@ -99,15 +103,16 @@ public class Main {
         switch (menuUm){
             case 1:
                 executarPrograma();
+
+
+
+
                 break;
             case 2:
                 System.out.println("Programa Finalizado!");
                 e.close();
                 break;
         }
-
-
-
 
 
 

@@ -37,7 +37,6 @@ public class Vertice {
         this.grauSaida = this.Sucessores.size();
         this.grauEntrada = this.Predecessores.size();
     }
-
     Vertice(){
         this.rotulo = 0;
         this.Sucessores = new ArrayList<>();
@@ -64,32 +63,6 @@ public class Vertice {
     }
 
 
-    /**
-     * Exibe todos os Sucessores do Vértice
-     */
-    public void exibirSucessores(){
-        System.out.print("Os Sucessores do Vértice " + this.rotulo + " são: {");
-        for(int i=0; i < this.grauSaida; i++){
-            System.out.print("(" + Sucessores.get(i) + ")");
-            if(i < this.grauSaida - 1){
-                System.out.print("; ");
-            }
-        }
-        System.out.print("}\n");
-    }
-    /**
-     * Exibe todos os Predecessores do Vértice
-     */
-    public void exibirPredecessores(){
-        System.out.print("Os Predecessores do Vértice " + this.rotulo + " são: {");
-        for(int i=0; i < this.grauEntrada; i++){
-            System.out.print("(" + Predecessores.get(i) + ")");
-            if(i < this.grauEntrada-1){
-                System.out.print("; ");
-            }
-        }
-        System.out.print("}\n");
-    }
 
 }
 
