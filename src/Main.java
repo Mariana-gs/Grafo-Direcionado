@@ -57,6 +57,7 @@ public class Main {
     public static void executarPrograma(){
 
         int vertice = 0;
+        int verticeDestino = 0;
         int menuDois = 0;
         Grafo grafo = null;
 
@@ -79,6 +80,10 @@ public class Main {
                 grafo.buscaLargura(vertice);
                 System.out.println("---");
                 grafo.possuiCiclo(vertice);
+                System.out.println("---");
+                System.out.println("Informe um vértice de destino para buscar um caminho: ");
+                verticeDestino = e.nextInt();
+                grafo.buscaCaminho(vertice, verticeDestino);
 
                 do {
                     menuDois = menuDois();

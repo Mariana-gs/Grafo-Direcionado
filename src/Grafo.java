@@ -1,4 +1,3 @@
-import java.lang.reflect.Constructor;
 import java.util.List;
 
 public class Grafo {
@@ -116,7 +115,6 @@ public class Grafo {
         }
         System.out.print("}\n");
     }
-
     /**
      * Exibe todos os Predecessores do Vértice
      * @param vertice
@@ -139,20 +137,30 @@ public class Grafo {
      */
     public void buscaProfundidade(int verticeOrigem) {
         System.out.println("Árvore da Busca em Profundidade");
-        System.out.println("Raiz: " + verticeOrigem);
+        System.out.println("Raíz: " + verticeOrigem);
         buscas.imprimirArvore(buscas.buscaProfundidade(verticeOrigem));
     }
-
     /**
      * Imprime a Árvore gerada pela Busca em Largura
      * @param verticeOrigem
      */
     public void buscaLargura(int verticeOrigem){
         System.out.println("Árvore da Busca em Largura");
-        System.out.println("Raiz: " + verticeOrigem);
+        System.out.println("Raíz: " + verticeOrigem);
         buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
+    public void buscaCaminho(int verticeOrigem, int verticeDestino){
+        if(buscas.buscaCaminho(verticeOrigem,verticeDestino) == false){
+            System.out.println("Não existe caminho entre os vértices " + verticeOrigem + " e "+ verticeDestino);
+        }
+
+    }
+
+    /**
+     * Exibe se o grafo é cíclico ou acíclico
+     * @param verticeOrigem
+     */
     public void possuiCiclo(int verticeOrigem){
 
         if(buscas.buscaCiclo(verticeOrigem))
@@ -161,6 +169,7 @@ public class Grafo {
             System.out.println("O grafo é acíclico");
 
     }
+
 
 
 }
