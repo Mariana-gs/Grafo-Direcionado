@@ -28,7 +28,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Implementação da busca em largura
 - [ ] Verificar a existência de caminho entre dois vértices. Caso exista, exibir o caminho
 - [ ] Testar se o grafo é conexo
-- [ ] Testar se o grafo é cíclico
+- [x] Testar se o grafo é cíclico
 
 ## 💻 Pré-requisitos
 
