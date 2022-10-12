@@ -26,7 +26,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Exibir conjunto de predecessores
 - [x] Implementação da busca em profundidade
 - [x] Implementação da busca em largura
-- [ ] Verificar a existência de caminho entre dois vértices. Caso exista, exibir o caminho
+- [x] Verificar a existência de caminho entre dois vértices. Caso exista, exibir o caminho
 - [ ] Testar se o grafo é conexo
 - [x] Testar se o grafo é cíclico
 
