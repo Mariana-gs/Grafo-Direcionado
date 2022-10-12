@@ -6,6 +6,7 @@ public class Grafo {
     Vertice grafo[];  //Vetor de Listas
     private int qtdVertices;  //Quantidade de Vértices do Grafo
     private int qtdArestas;   //Quantidade de Arestas do Grafo
+    private Busca buscas;
 
     public int getQtdVertices() {
         return qtdVertices;
@@ -14,16 +15,13 @@ public class Grafo {
         return qtdArestas;
     }
 
-
     /**
      * Construtor
      * @param arquivoGrafo Caminho do Arquivo
      */
     Grafo(String arquivoGrafo){
         criarGrafo(arquivoGrafo);
-    }
-    Grafo(int tamanho){
-        grafo = new Vertice[tamanho+1];
+        this.buscas = new Busca(grafo);
     }
 
     /**
@@ -135,28 +133,25 @@ public class Grafo {
         System.out.print("}\n");
     }
 
-    public void buscaProfundidade(int verticeOrigem){
-        BuscaProfundidade buscaProfundidade = new BuscaProfundidade(grafo);
+    /**
+     * Imprime a Árvore gerada pela Busca em Profundidade
+     * @param verticeOrigem
+     */
+    public void buscaProfundidade(int verticeOrigem) {
         System.out.println("Árvore da Busca em Profundidade");
         System.out.println("Raiz: " + verticeOrigem);
-        imprimirArvore(buscaProfundidade.buscar(verticeOrigem));
+        buscas.imprimirArvore(buscas.buscaProfundidade(verticeOrigem));
     }
 
+    /**
+     * Imprime a Árvore gerada pela Busca em Largura
+     * @param verticeOrigem
+     */
     public void buscaLargura(int verticeOrigem){
-        BuscaLargura buscaLargura = new BuscaLargura(grafo);
         System.out.println("Árvore da Busca em Largura");
         System.out.println("Raiz: " + verticeOrigem);
-        imprimirArvore(buscaLargura.buscar(verticeOrigem));
+        buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
-    public void imprimirArvore(int[][] arvore){
-        for(int i = 0 ; i < arvore.length; i++){
-            if(arvore[i][0] != 0){
-                System.out.println(arvore[i][0] + " -> " +  arvore[i][1]);
-            }else{
-                break;
-            }
-        }
-    }
 
 }
