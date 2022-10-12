@@ -4,6 +4,10 @@ public class Pilha {
     private int fundo;
     private int tamanho;
 
+    public int getTopo() {
+        return topo;
+    }
+
     public Pilha(int tamanho){
         this.pilha = new Vertice[tamanho];
         this.fundo = 0;

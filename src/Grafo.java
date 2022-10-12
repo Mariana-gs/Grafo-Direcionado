@@ -153,5 +153,14 @@ public class Grafo {
         buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
+    public void possuiCiclo(int verticeOrigem){
+
+        if(buscas.buscaCiclo(verticeOrigem))
+            System.out.println("O grafo é cíclico");
+        else
+            System.out.println("O grafo é acíclico");
+
+    }
+
 
 }

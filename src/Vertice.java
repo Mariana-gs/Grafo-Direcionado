@@ -62,7 +62,5 @@ public class Vertice {
         this.grauEntrada++;
     }
 
-
-
 }
 

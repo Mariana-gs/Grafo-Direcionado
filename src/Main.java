@@ -77,6 +77,8 @@ public class Main {
                 grafo.buscaProfundidade(vertice);
                 System.out.println("---");
                 grafo.buscaLargura(vertice);
+                System.out.println("---");
+                grafo.possuiCiclo(vertice);
 
                 do {
                     menuDois = menuDois();
@@ -103,18 +105,12 @@ public class Main {
         switch (menuUm){
             case 1:
                 executarPrograma();
-
-
-
-
                 break;
             case 2:
                 System.out.println("Programa Finalizado!");
                 e.close();
                 break;
         }
-
-
-
     }
+
 }
