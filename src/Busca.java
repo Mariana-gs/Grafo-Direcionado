@@ -224,6 +224,7 @@ public class Busca {
                     }
                 }
             }
+        
 
         return false;
     }
@@ -249,6 +250,10 @@ public class Busca {
             visitados.empilhar(grafo[verticeOrigem]);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        if(verticeOrigem == verticeDestino){
+            return visitados;
         }
 
         while(!visitados.pilhaVazia()){
@@ -298,6 +303,10 @@ public class Busca {
             e.printStackTrace();
         }
 
+        if(verticeOrigem == verticeDestino){
+            return visitados;
+        }
+
         while(!visitados.pilhaVazia()){
             try {
                 if(visitados.consultar() != null){
@@ -333,7 +342,7 @@ public class Busca {
     }
 
     public boolean ehConexo(Vertice[] subjacente){
-        int qtdvertices = grafo.length-1;
+        int qtdvertices = subjacente.length-1;
 
         Pilha caminho;
 
@@ -341,9 +350,15 @@ public class Busca {
 
         for(int i = 0; i < qtdvertices; i++){
             for(int j = 0; j < qtdvertices; j++){
-                caminho = buscaCaminho(i,j,subjacente);
-                if(caminho.pilhaVazia()) conexo = false;
-                break;
+                if(subjacente[i] != null && subjacente[j] != null){
+                    caminho = buscaCaminho(subjacente[i].getRotulo() ,subjacente[j].getRotulo() ,subjacente);
+                    if(caminho.pilhaVazia()){
+                        conexo = false;
+                        break;
+                    }
+                }
+
+
             }
         }
 
