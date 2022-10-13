@@ -179,9 +179,7 @@ public class Busca {
         // Busca termina qaundo a pilha está vazia
         while(!visitados.pilhaVazia()){
             try {
-                if(visitados!= null){
-                    u = visitados.consultar().getRotulo();
-                }
+                u = visitados.consultar().getRotulo();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -190,7 +188,6 @@ public class Busca {
              * Verifica se há um sucessor do vértice atual que já foi visitado
              * para fechar um ciclo
              */
-            if(this.grafo[u]!=null)
             while (contadorSucessores < grafo[u].getSucessores().size()){
                 sucessor = grafo[u].getSucessores().get(contadorSucessores); //obtem rótulo de um sucessor
                 try {
@@ -227,12 +224,7 @@ public class Busca {
                     }
                 }
             }
-
-        for(int i = 0; i < this.grafo.length; i++){
-            if(matrizBusca[0][i] == 0 && i != verticeOrigem){
-                if(buscaCiclo(i)) return true;
-            }
-        }
+        
 
         return false;
     }
