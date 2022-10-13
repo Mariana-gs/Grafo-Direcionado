@@ -148,13 +148,28 @@ public class Busca {
         return -1;
     }
 
+    public boolean buscaCiclo(int verticeOrigem){
+        boolean ciclo = false;
+
+        ciclo = buscaUmCiclo(verticeOrigem);
+        if(!ciclo){
+            for (int i = 1; i < grafo.length; i++) {
+                if(i != verticeOrigem){
+                    ciclo = buscaUmCiclo(i);
+                    if(ciclo) break;
+                }
+            }
+        }
+
+        return ciclo;
+    }
 
     /**
      * Método testa se o grafo possui ciclo
      * @param verticeOrigem
      * @return
      */
-    public boolean buscaCiclo(int verticeOrigem){
+    public boolean buscaUmCiclo(int verticeOrigem){
 
         int controleCiclo[] = new int[this.grafo.length]; //controle de itens que estão na pilha
 
@@ -224,7 +239,6 @@ public class Busca {
                     }
                 }
             }
-        
 
         return false;
     }
@@ -357,11 +371,8 @@ public class Busca {
                         break;
                     }
                 }
-
-
             }
         }
-
         return conexo;
     }
 
