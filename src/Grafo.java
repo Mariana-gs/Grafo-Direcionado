@@ -74,17 +74,22 @@ public class Grafo {
      * @param sucessor
      */
     public void inserirVertice(int verticeAtual, int sucessor){
+
+
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
             Vertice vertice = new Vertice(verticeAtual);
+            Vertice verticeSub = new Vertice(verticeAtual);
             grafo[verticeAtual] = vertice;
-            subjacente[verticeAtual] = vertice;
+            subjacente[verticeAtual] = verticeSub;
         }
         if(grafo[sucessor] == null){
             Vertice vertice = new Vertice(sucessor);
+            Vertice verticeSub = new Vertice(sucessor);
             grafo[sucessor] = vertice;
-            subjacente[sucessor] = vertice;
+            subjacente[sucessor] = verticeSub;
         }
+
         //inserir nas listas
         grafo[verticeAtual].inserirSucessor(sucessor);
         grafo[sucessor].inserirPredecessor(verticeAtual);
@@ -159,8 +164,6 @@ public class Grafo {
         buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
-
-
     public void buscaCaminho(int verticeOrigem, int verticeDestino){
         Pilha visitados = buscas.buscaCaminho(verticeOrigem,verticeDestino);
         if(!visitados.pilhaVazia()){
@@ -170,6 +173,16 @@ public class Grafo {
             System.out.println("Não existe caminho entre os vértices " + verticeOrigem + " e "+ verticeDestino);
         }
 
+    }
+
+    public void ehConexo(){
+
+        boolean conexo = buscas.ehConexo(this.subjacente);
+        if(conexo){
+            System.out.println("O grafo é conexo");
+        }else{
+            System.out.println("O grafo é desconexo");
+        }
     }
 
     /**

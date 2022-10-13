@@ -130,6 +130,25 @@ public class Busca {
         return -1;
     }
 
+    private int sucessorNaoVisitado(int u, int [][] matrizBusca, Vertice[] subjacente){
+        if(subjacente[u] != null){
+            int qtdSucessores = subjacente[u].getSucessores().size();
+            int i = 0;
+            int sucessor;
+
+            while (i < qtdSucessores){
+                sucessor = subjacente[u].getSucessores().get(i); //obtem rótulo de um sucessor
+                if(matrizBusca[0][sucessor] != 1){  //se não for visitado
+                    return sucessor;
+                }else{
+                    i++;
+                }
+            }
+        }
+        return -1;
+    }
+
+
     /**
      * Método testa se o grafo possui ciclo
      * @param verticeOrigem
@@ -151,6 +170,7 @@ public class Busca {
         matrizBusca[0][verticeOrigem] = 1;
         try {
             visitados.empilhar(grafo[verticeOrigem]);
+            controleCiclo[verticeOrigem] = 1;
             qtdVisitados++;
         } catch (Exception e) {
             e.printStackTrace();
@@ -208,7 +228,6 @@ public class Busca {
         return false;
     }
 
-
     public Pilha buscaCaminho(int verticeOrigem, int verticeDestino){
 
         /*
@@ -264,6 +283,72 @@ public class Busca {
         return visitados;
     }
 
+    public Pilha buscaCaminho(int verticeOrigem, int verticeDestino, Vertice[] subjacente){
+
+        Pilha visitados = new Pilha(subjacente.length);
+        int matrizBusca[][] = new int[2][subjacente.length];
+
+        int u = 0;
+        int sucessor;
+
+        matrizBusca[0][verticeOrigem] = 1;
+        try {
+            visitados.empilhar(subjacente[verticeOrigem]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        while(!visitados.pilhaVazia()){
+            try {
+                if(visitados.consultar() != null){
+                    u = visitados.consultar().getRotulo();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            sucessor = sucessorNaoVisitado(u, matrizBusca, subjacente);
+
+            if(sucessor != -1){ //se tem sucessores não visitados
+                matrizBusca[0][sucessor] = 1; //visitado
+                matrizBusca[1][sucessor] = u; //predecessor
+                try {
+                    visitados.empilhar(subjacente[sucessor]);
+                    if(sucessor == verticeDestino){
+                        return visitados;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } //empilhar sucessor
+
+            }else{
+                try {
+                    visitados.desempilhar();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } //desempilhar
+            }
+        }
+
+        return visitados;
+    }
+
+    public boolean ehConexo(Vertice[] subjacente){
+        int qtdvertices = grafo.length-1;
+
+        Pilha caminho;
+
+        boolean conexo = true;
+
+        for(int i = 0; i < qtdvertices; i++){
+            for(int j = 0; j < qtdvertices; j++){
+                caminho = buscaCaminho(i,j,subjacente);
+                if(caminho.pilhaVazia()) conexo = false;
+                break;
+            }
+        }
+
+        return conexo;
+    }
 
     public void imprimirArvore(int[][] arvore){
         for(int i = 0 ; i < arvore.length; i++){

@@ -84,6 +84,8 @@ public class Main {
                 System.out.println("Informe um vértice de destino para buscar um caminho: ");
                 verticeDestino = e.nextInt();
                 grafo.buscaCaminho(vertice, verticeDestino);
+                System.out.println("---");
+                grafo.ehConexo();
 
                 do {
                     menuDois = menuDois();
