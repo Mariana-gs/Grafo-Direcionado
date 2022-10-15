@@ -2,12 +2,13 @@
 
 <div align="center">
 
+ <!--
 ![GitHub repo size](https://img.shields.io/github/repo-size/Mariana-gs/Grafo-Direcionado?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/Mariana-gs/Grafo-Direcionado?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/Mariana-gs/Grafo-Direcionado?style=for-the-badge)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Mariana-gs/Grafo-Direcionado?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Mariana-gs/Grafo-Direcionado?style=for-the-badge)
-
+-->
 ![Captura de tela 2022-09-03 142002](https://user-images.githubusercontent.com/81964220/188281626-ad09768a-28b4-4794-80aa-3bf007a711f5.png)
 
 </div>
