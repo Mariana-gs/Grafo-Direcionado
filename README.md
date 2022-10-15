@@ -55,6 +55,11 @@ Serão exibidas as seguintes informações:
 - Grau de entrada
 - Conjunto de sucessores
 - Conjunto de predecessores
+- Árvore da Busca em Profundidade
+- Árvore da Busca em Largura
+- Caminho entre os vértices informados
+- Indicação se o grafo é Cíclico
+- Indicação se o grafo é Conexo
  
 4. Escolher entre abrir um outro arquivo, informar um novo vértice ou sair do programa.
 
