@@ -58,7 +58,7 @@ Serão exibidas as seguintes informações, nessa ordem:
 - Árvore da Busca em Profundidade
 - Árvore da Busca em Largura
 - Indicação se o grafo é Cíclico
-- Caminho entre os vértices informados
+- Caminho entre os vértices informados - Nesse ponto será necessário indicar um vértice de destino
 - Indicação se o grafo é Conexo
  
 4. Escolher entre informar um novo vértice, abrir um outro arquivo ou sair do programa.
