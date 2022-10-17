@@ -4,13 +4,6 @@ public class Pilha {
     private int fundo;
     private int tamanho;
 
-    public Vertice[] getPilha() {
-        return pilha;
-    }
-
-    public int getTopo() {
-        return topo;
-    }
 
     public Pilha(int tamanho){
         this.pilha = new Vertice[tamanho];
@@ -18,7 +11,6 @@ public class Pilha {
         this.topo = 0;
         this.tamanho = tamanho;
     }
-
     public boolean pilhaCheia() {
         boolean cheia;
         if(this.topo == this.tamanho){
@@ -28,7 +20,6 @@ public class Pilha {
         }
         return cheia;
     }
-
     public boolean pilhaVazia(){
         boolean vazia;
 
@@ -39,7 +30,6 @@ public class Pilha {
         }
         return vazia;
     }
-
     public void empilhar(Vertice item) throws Exception{
         if(!pilhaCheia()){
             this.pilha[this.topo] = item;
@@ -48,7 +38,6 @@ public class Pilha {
             throw new Exception("Não foi possível empilhar: as pilha já está cheia!");
         }
     }
-
     public Vertice desempilhar() throws Exception{
         Vertice item = null;
         if(!pilhaVazia()){
@@ -59,7 +48,6 @@ public class Pilha {
         }
         return item;
     }
-
     public Vertice consultar() throws Exception{
         Vertice item = null;
         if(!pilhaVazia()){
@@ -69,7 +57,6 @@ public class Pilha {
         }
         return item;
     }
-
     public void imprimir(){
         for(int i = 0; i <= this.topo-1; i++){
             System.out.println(" (" + pilha[i].getRotulo() + ")");

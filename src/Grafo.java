@@ -2,12 +2,13 @@ import java.util.List;
 
 public class Grafo {
 
-    Vertice grafo[];  //Vetor de Listas
-    Vertice subjacente[];
-    private int qtdVertices;  //Quantidade de Vértices do Grafo
-    private int qtdArestas;   //Quantidade de Arestas do Grafo
+    Vertice grafo[];          // Vetor de Listas para representar o grafo
+    Vertice subjacente[];     // Vetor de Listas para representar seu grafo subjacente
+    private int qtdVertices;  // Quantidade de Vértices do Grafo
+    private int qtdArestas;   // Quantidade de Arestas do Grafo
     private Busca buscas;
 
+    //Getters
     public int getQtdVertices() {
         return qtdVertices;
     }
@@ -70,11 +71,10 @@ public class Grafo {
 
     /**
      * Insere um vétice no Grafo
-     * @param verticeAtual
-     * @param sucessor
+     * @param verticeAtual Rótulo do Vértice que será inserido
+     * @param sucessor Rótulo do Sucessor do Vértice
      */
     public void inserirVertice(int verticeAtual, int sucessor){
-
 
         //inserir no vetor se não existirem
         if(grafo[verticeAtual] == null){
@@ -101,14 +101,14 @@ public class Grafo {
     }
     /**
      * Exibe Grau de Saída do Vértice
-     * @param vertice
+     * @param vertice Rótulo do Vértice
      */
     public void grauSaida(int vertice){
         System.out.println("O grau de Saída do Vértice " + vertice + " é: " + grafo[vertice].getGrauSaida());
     }
     /**
      * Exibe Grau de Entrada do Vértice
-     * @param vertice
+     * @param vertice Rótulo do Vértice
      */
     public void grauEntrada(int vertice){
         System.out.println("O grau de Entrada do Vértice " + vertice + " é: " + grafo[vertice].getGrauEntrada());
@@ -116,7 +116,7 @@ public class Grafo {
 
     /**
      * Exibe todos os Sucessores do Vértice
-     * @param vertice
+     * @param vertice Rótulo do Vértice
      */
     public void exibirSucessores(int vertice){
         List<Integer> Sucessores = grafo[vertice].getSucessores();
@@ -131,7 +131,7 @@ public class Grafo {
     }
     /**
      * Exibe todos os Predecessores do Vértice
-     * @param vertice
+     * @param vertice Rótulo do Vértice
      */
     public void exibirPredecessores(int vertice){
         List<Integer> Predecessores = grafo[vertice].getPredecessores();
@@ -146,8 +146,8 @@ public class Grafo {
     }
 
     /**
-     * Imprime a Árvore gerada pela Busca em Profundidade
-     * @param verticeOrigem
+     * Exibe a Árvore gerada pela Busca em Profundidade
+     * @param verticeOrigem Rótulo do Vértice Raíz
      */
     public void buscaProfundidade(int verticeOrigem) {
         System.out.println("Árvore da Busca em Profundidade");
@@ -155,8 +155,8 @@ public class Grafo {
         buscas.imprimirArvore(buscas.buscaProfundidade(verticeOrigem));
     }
     /**
-     * Imprime a Árvore gerada pela Busca em Largura
-     * @param verticeOrigem
+     * Exibe a Árvore gerada pela Busca em Largura
+     * @param verticeOrigem Rótulo do Vértice Raíz
      */
     public void buscaLargura(int verticeOrigem){
         System.out.println("Árvore da Busca em Largura");
@@ -164,19 +164,25 @@ public class Grafo {
         buscas.imprimirArvore(buscas.buscaLargura(verticeOrigem));
     }
 
+    /**
+     * Exibe o caminho encontrado entre os Vértices
+     * @param verticeOrigem Rótulo do Vértice de Origem
+     * @param verticeDestino Rótulo do Vértice de Destino
+     */
     public void buscaCaminho(int verticeOrigem, int verticeDestino){
         Pilha visitados = buscas.buscaCaminho(verticeOrigem,verticeDestino);
-        if(!visitados.pilhaVazia()){
+        if(!visitados.pilhaVazia()) {
             System.out.println("\nPrimeiro caminho encontrado entre os vértices " + verticeOrigem + " e "+ verticeDestino);
             visitados.imprimir();
-        } else{
+        } else {
             System.out.println("Não existe caminho entre os vértices " + verticeOrigem + " e "+ verticeDestino);
         }
-
     }
 
+    /**
+     * Exibe se grafo é conexo ou desconexo
+     */
     public void ehConexo(){
-
         boolean conexo = buscas.ehConexo(this.subjacente);
         if(conexo){
             System.out.println("O grafo é conexo");
@@ -187,7 +193,7 @@ public class Grafo {
 
     /**
      * Exibe se o grafo é cíclico ou acíclico
-     * @param verticeOrigem
+     * @param verticeOrigem Rótulo do Vértice de Origem
      */
     public void possuiCiclo(int verticeOrigem){
 

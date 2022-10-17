@@ -9,6 +9,7 @@ public class Vertice {
     private List<Integer> Sucessores;       //Lista de Sucessores do Vértice
     private List<Integer> Predecessores;    //Lista de Predecessores do Vértice
 
+    // Getters
     public int getGrauSaida() {
         return grauSaida;
     }
@@ -18,7 +19,6 @@ public class Vertice {
     public int getRotulo() {
         return rotulo;
     }
-
     public List<Integer> getSucessores() {
         return Sucessores;
     }

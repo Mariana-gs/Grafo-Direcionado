@@ -2,11 +2,17 @@ public class Busca {
 
     private Vertice grafo[];
 
-
+    //Construtor
     Busca(Vertice grafo[]){
         this.grafo = grafo;
     }
 
+    /**
+     * Realiza a busca em Largura e retorna uma Matriz
+     * para representar a árvore encontrada
+     * @param verticeOrigem Vértice Raíz
+     * @return Matriz de Inteiros para representar Árvore de Busca
+     */
     public int[][] buscaLargura(int verticeOrigem){
         Fila visitados = new Fila(this.grafo.length);
         int matrizBusca[][] = new int[2][this.grafo.length];
@@ -34,16 +40,15 @@ public class Busca {
             int qtdSucessores = grafo[u].getSucessores().size();
             int i = 0;
 
-            //para all vertice adjacente a u
+            //para cada vertice adjacente a u
             while (i < qtdSucessores){
                 sucessor = grafo[u].getSucessores().get(i); //obtem rótulo de um sucessor
-                if(matrizBusca[0][sucessor] != 1){  //se não for visitado
-                    matrizBusca[0][sucessor] = 1; //visitado
-                    matrizBusca[1][sucessor] = u; //predecessor
+                if(matrizBusca[0][sucessor] != 1){ //se não for visitado
+                    matrizBusca[0][sucessor] = 1;  //marca como visitado
+                    matrizBusca[1][sucessor] = u;  //seta predecessor
                     arvore[a][0] = u;
                     arvore[a][1] = sucessor;
                     a++;
-                    //System.out.println(u + "->" + sucessor);
                     try {
                         visitados.enfileirar(grafo[sucessor]);
                     } catch (Exception e) {
@@ -58,6 +63,12 @@ public class Busca {
         return arvore;
     }
 
+    /**
+     * Realiza a busca em Profundidade e retorna uma Matriz
+     * para representar a árvore encontrada
+     * @param verticeOrigem Vértice Raíz
+     * @return Matriz de Inteiros para representar Árvore de Busca
+     */
     public int[][] buscaProfundidade(int verticeOrigem){
         Pilha visitados = new Pilha(this.grafo.length);
         int matrizBusca[][] = new int[2][this.grafo.length];
@@ -84,9 +95,9 @@ public class Busca {
 
             sucessor = sucessorNaoVisitado(u, matrizBusca);
 
-            if(sucessor != -1){ //se tem sucessores não visitados
-                matrizBusca[0][sucessor] = 1; //visitado
-                matrizBusca[1][sucessor] = u; //predecessor
+            if(sucessor != -1){  //se tem sucessores não visitados
+                matrizBusca[0][sucessor] = 1; //marca como visitado
+                matrizBusca[1][sucessor] = u; //seta predecessor
                 arvore[a][0] = u;
                 arvore[a][1] = sucessor;
                 a++;
@@ -109,10 +120,11 @@ public class Busca {
     }
 
     /**
-     * Função que retorna o próximo sucessor que ainda não foi
+     * Método que retorna o próximo sucessor que ainda não foi
      * visitado, se não houver, retorna -1
-     * @param u
-     * @return
+     * @param u Rótulo do Vértice
+     * @param matrizBusca Matriz de Busca do Grafo
+     * @return Rótulo de um Sucessor que ainda não foi visitado
      */
     private int sucessorNaoVisitado(int u, int [][] matrizBusca){
         int qtdSucessores = grafo[u].getSucessores().size();
@@ -130,6 +142,14 @@ public class Busca {
         return -1;
     }
 
+    /**
+     * Método, para grafo subjacente, que retorna o próximo sucessor que ainda não foi
+     * visitado, se não houver, retorna -1
+     * @param u Rótulo do Vértice
+     * @param matrizBusca Matriz de Busca do Grafo
+     * @param subjacente Vetor de Listas que representa o grafo subjacente
+     * @return Rótulo de um Sucessor que ainda não foi visitado
+     */
     private int sucessorNaoVisitado(int u, int [][] matrizBusca, Vertice[] subjacente){
         if(subjacente[u] != null){
             int qtdSucessores = subjacente[u].getSucessores().size();
@@ -148,8 +168,14 @@ public class Busca {
         return -1;
     }
 
+    /**
+     * Verifica se existe algum ciclo no grafo partindo do vértice indicado,
+     * se não houver testa para outros vértices
+     * @param verticeOrigem Rótulo do Primeiro Vértice de Origem
+     * @return Verdadeiro se houver ciclo ou Falso se não houver ciclo
+     */
     public boolean buscaCiclo(int verticeOrigem){
-        boolean ciclo = false;
+        boolean ciclo;
 
         ciclo = buscaUmCiclo(verticeOrigem);
         if(!ciclo){
@@ -165,9 +191,10 @@ public class Busca {
     }
 
     /**
-     * Método testa se o grafo possui ciclo
-     * @param verticeOrigem
-     * @return
+     * Verifica se existe um ciclo partindo
+     * somente do vértice indicado
+     * @param verticeOrigem Rótulo do vértice de origem
+     * @return Verdadeiro se houver ciclo ou Falso se não houver ciclo
      */
     public boolean buscaUmCiclo(int verticeOrigem){
 
@@ -243,15 +270,14 @@ public class Busca {
         return false;
     }
 
+    /**
+     * Método realiza busca por um caminho entre
+     * os dois vértices indicados
+     * @param verticeOrigem Rótulo do Vértice de Origem
+     * @param verticeDestino Rótulo do Vértice de Destino
+     * @return Pilha contendo o caminho encontrado
+     */
     public Pilha buscaCaminho(int verticeOrigem, int verticeDestino){
-
-        /*
-         * Buscar,
-         * if
-         * encontrar o vertice destino imprimir a pilha
-         * else
-         * não há caminho
-         */
 
         Pilha visitados = new Pilha(this.grafo.length);
         int matrizBusca[][] = new int[2][this.grafo.length];
@@ -279,31 +305,38 @@ public class Busca {
             sucessor = sucessorNaoVisitado(u, matrizBusca);
 
             if(sucessor != -1){ //se tem sucessores não visitados
-                matrizBusca[0][sucessor] = 1; //visitado
-                matrizBusca[1][sucessor] = u; //predecessor
-                try {
+                matrizBusca[0][sucessor] = 1; //marca como visitado
+                matrizBusca[1][sucessor] = u; //seta predecessor
+                try { //empilhar sucessor
                     visitados.empilhar(grafo[sucessor]);
                     if(sucessor == verticeDestino){
                         return visitados;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                } //empilhar sucessor
+                }
 
             }else{
-                try {
+                try { //desempilhar
                     visitados.desempilhar();
                 } catch (Exception e) {
                     e.printStackTrace();
-                } //desempilhar
+                }
             }
         }
 
         return visitados;
     }
 
+    /**
+     * Método realiza busca, no grafo subjacente, por um
+     * caminho entre os dois vértices indicados
+     * @param verticeOrigem Rótulo do Vértice de Origem
+     * @param verticeDestino Rótulo do Vértice de Destino
+     * @param subjacente Vetor de Listas que representa o grafo subjacente
+     * @return Pilha contendo o caminho encontrado
+     */
     public Pilha buscaCaminho(int verticeOrigem, int verticeDestino, Vertice[] subjacente){
-
         Pilha visitados = new Pilha(subjacente.length);
         int matrizBusca[][] = new int[2][subjacente.length];
 
@@ -332,29 +365,35 @@ public class Busca {
             sucessor = sucessorNaoVisitado(u, matrizBusca, subjacente);
 
             if(sucessor != -1){ //se tem sucessores não visitados
-                matrizBusca[0][sucessor] = 1; //visitado
-                matrizBusca[1][sucessor] = u; //predecessor
-                try {
+                matrizBusca[0][sucessor] = 1; //marca como visitado
+                matrizBusca[1][sucessor] = u; //seta predecessor
+                try { //empilhar sucessor
                     visitados.empilhar(subjacente[sucessor]);
                     if(sucessor == verticeDestino){
                         return visitados;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                } //empilhar sucessor
+                }
 
             }else{
-                try {
+                try { //desempilhar
                     visitados.desempilhar();
                 } catch (Exception e) {
                     e.printStackTrace();
-                } //desempilhar
+                }
             }
         }
 
         return visitados;
     }
 
+    /**
+     * Verifica se há caminho entre todos
+     * os pares de vértices do grafo
+     * @param subjacente Vetor de Listas que representa o grafo subjacente
+     * @return Verdadeiro se for conexo ou falso se for desconexo
+     */
     public boolean ehConexo(Vertice[] subjacente){
         int qtdvertices = subjacente.length-1;
 
@@ -376,6 +415,10 @@ public class Busca {
         return conexo;
     }
 
+    /**
+     * Exibe uma árvore
+     * @param arvore Matriz de inteiros que representa uma árvore
+     */
     public void imprimirArvore(int[][] arvore){
         for(int i = 0 ; i < arvore.length; i++){
             if(arvore[i][0] != 0){
