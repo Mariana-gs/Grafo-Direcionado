@@ -50,18 +50,18 @@ C:\Documentos\GitHub\Grafo Direcionado\src\Arquivos\graph-test-100.txt
 No projeto pode ser encontrada um pasta chamada `Arquivos`, nela há três arquivos que podem ser utilizados para teste do programa.
 
 3. Informar o vértice para obter os dados referente a ele. 
-Serão exibidas as seguintes informações: 
+Serão exibidas as seguintes informações, nessa ordem: 
 - Grau de saída
 - Grau de entrada
 - Conjunto de sucessores
 - Conjunto de predecessores
 - Árvore da Busca em Profundidade
 - Árvore da Busca em Largura
-- Caminho entre os vértices informados
 - Indicação se o grafo é Cíclico
+- Caminho entre os vértices informados
 - Indicação se o grafo é Conexo
  
-4. Escolher entre abrir um outro arquivo, informar um novo vértice ou sair do programa.
+4. Escolher entre informar um novo vértice, abrir um outro arquivo ou sair do programa.
 
 
 ## :mortar_board: Autora
