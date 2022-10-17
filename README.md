@@ -69,6 +69,7 @@ Serão exibidas as seguintes informações, nessa ordem:
 <h4 align="center">
    Feito com ♥️ by <a href="https://github.com/Mariana-gs" target="_blank"> Mariana-gs </a>
 </h4>
+<!--
 <table align="center">
     <tr>
         <td align="center">
@@ -80,5 +81,6 @@ Serão exibidas as seguintes informações, nessa ordem:
         </td>    
     </tr>
 </table>
+-->
 
 
