@@ -63,6 +63,18 @@ Serão exibidas as seguintes informações, nessa ordem:
  
 4. Escolher entre informar um novo vértice, abrir um outro arquivo ou sair do programa.
 
+---
+## 💻 Grafo Utilizado para esse trabalho
+
+<div align="center">
+ 
+![darkweb](https://github.com/Mariana-gs/Grafo-Direcionado/assets/81964220/d303e47c-6254-4b78-a432-493c5897b018)
+ 
+</div>
+
+>  Estrutura da Dark Web
+
+---
 
 ## :mortar_board: Autora
 
